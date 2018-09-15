@@ -1,3 +1,15 @@
+How SED works:
+--------------
+sed reads the standard input into the pattern space, 
+STDIN --- > PATTE SPACE
+
+performs a sequence of editing commands on the pattern space, 
+Process specified commands on ( PATTE SPACE )
+then writes the pattern space to STDOUT.
+
+PATTE SPACE ---- > STDOUT
+
+------------------------------------------------------------
 Command:
 # sed -e 's/apc2/apc1/g' -e 's/scripts2222222/scripts/g' passwd -i.org
 
