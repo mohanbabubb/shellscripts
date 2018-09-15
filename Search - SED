@@ -1,0 +1,12 @@
+Command:
+# sed -e 's/apc2/apc1/g' -e 's/scripts2222222/scripts/g' passwd -i.org
+
+passwd (edited file)
+passwd.org (backup of original file)
+
+search and replace 
+-e edit
+-i create backup before editing and saving the file.
+
+--------------------------------------------------------------------
+
