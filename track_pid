@@ -1,0 +1,50 @@
+PROGRAM |
+--------
+
+Tmp_pID_TRACk=$BASE_TMP/cat_tomcat.pid
+
+
+#for getting the pid from the file
+get-pid-stat-0 ()
+{
+file=$1
+PID=""
+if [-f $file]; then
+PID=`cat $file` 
+fi
+}
+
+#for getting the existence of the pid
+get-pid-stat  ()
+{
+get-pid-stat-0 $Tmp_pID_TRACk
+if [ ! $PID ];then
+return
+fi
+}
+
+
+chk-pid-stat ()
+{
+if [ "x$PID" != "x" ]&& kill -0 $PID 2>/dev/null; then 
+RUNNING=1
+else
+RUNNING=0
+fi 
+return $RUNNING
+}
+
+
+
+#for checking the pid running status
+check_pid_status ()
+{
+get-pid-stat
+chk-pid-stat $PID
+if [ $RUNNING -eq 0 ]; then 
+TOMCAT_STATUS="server running"
+else
+TOMCAT_STATUS="server not running"
+fi
+return $RUNNING
+}
